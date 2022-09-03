@@ -18,19 +18,21 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         viewModelFactory = MainActivityViewModelFactory(125)
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainActivityViewModel::class.java)
+        binding.myViewModel = viewModel
+        binding.lifecycleOwner = this
 
 //        binding.resultTextView.text = viewModel.getTotal().toString()
 
         // initial
         // viewModel.total.observe(this, Observer {
-        viewModel.totalData.observe(this, Observer {
-            binding.resultTextView.text = it.toString()
-        })
+//        viewModel.totalData.observe(this, Observer {
+//            binding.resultTextView.text = it.toString()
+//        })
 
 
-        binding.insertButton.setOnClickListener {
-            viewModel.setTotal(binding.inputEditText.text.toString().toInt())
+//        binding.insertButton.setOnClickListener {
+//            viewModel.setTotal(binding.inputEditText.text.toString().toInt())
 //            binding.resultTextView.text = viewModel.getTotal().toString()
-        }
+//        }
     }
 }
